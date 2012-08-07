@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>uTorrent manager</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="stylesheet.css?1"> 
+        <link rel="stylesheet" type="text/css" href="js/jquery.contextmenu.css?1"> 
+        <link rel="stylesheet" type="text/css" href="js/jquery.selectbox.css?1"> 
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.selectbox.js?1"></script>
+        <script src="js/graph.js?1"></script>
+        <script src="js/lang.js"></script>
+        <script src="js/jquery.timers-1.2.js"></script>
+        <script src="js/jquery.tablesorter.js?1"></script>
+        <script src="js/jquery.contextmenu.js?1"></script>
+        <script src="js/manager.js?1"></script>
+    </head>
+    <body>
+        <div class="main-menu">
+            <div class="btn_m-p"><a class="refresh" title="Refresh"></a></div>
+            <div class="separate"></div>
+            <div class="btn_m-p"><a class="donate" href="donate.html" title="Donate"></a></div>
+            <div class="btn_m-p"><a class="wui" target="_blank" href="" title="uTorrent web-interface"></a></div>
+            <div class="separate"></div>
+            <div class="btn_m-p"><a class="play_all" title="Resume all torrents"></a></div>
+            <div class="btn_m-p"><a class="pause_all" title="Pause all torrents"></a></div>
+            <div class="separate"></div>
+            <div class="conv_cont">
+                <canvas id="graph"></canvas>
+            </div>
+            <select id="label_select" name="label_select" class="label_select">
+            </select>
+        </div>
+        <div class="tr-box">
+            <table id="tr_list_fix" class="tr-list fix" border="0" cellspacing="0" cellpadding="0">
+            </table>
+            <table id="tr_list_list" class="tr-list list" border="0" cellspacing="0" cellpadding="0" >
+                <thead> 
+                    <tr class="head">
+                    </tr>
+                </thead> 
+                <tbody></tbody>
+            </table>
+        </div>
+        <table class="bottom-panel" width="100%" border="0" cellspacing="0" cellpadding="0" >
+            <tbody>
+                <tr>
+                    <td class="a"></td>
+                    <td class="d">D: -</td>
+                    <td class="u l">U: -</td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="timer"></div>
+        <div id="fl_box">
+            <div class="tb_box">
+                <table id="fl_list_fix" class="fl-list fix" border="0" cellspacing="0" cellpadding="0" >
+                    <thead></thead>
+                </table>
+                <table id="fl_list_list" class="fl-list list" border="0" cellspacing="0" cellpadding="0" width="100%" >
+                    <thead> 
+                        <tr>
+                            <th class="chk_box"><div title=""><input type="checkbox" /></div></th>
+                    <th class="fl_name"><div title="">File name</div></th>
+                    <th class="fl_size"><div title="">Size</div></th>
+                    <th class="fl_comp"><div title="">Colplite</div></th>
+                    <th class="fl_dune"><div title="">%</div></th>
+                    <th class="fl_prio l"><div title="">prio</div></th>
+                    </tr>
+                    </thead> 
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="bottom-menu">
+                <input type="text" class="path" readonly="readonly"/>
+                <a class="close" href=""></a>
+                <a class="update" href=""></a>
+                <select id="tree_select" name="tree_select" class="tree_select"></select>
+            </div>
+        </div>
+    </body>
+</html>
