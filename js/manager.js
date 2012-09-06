@@ -360,34 +360,7 @@ var manager = function () {
         {
             switch (type) {
                 case ('t_name'):
-                    
-                    //House M.D. (season 1-8) - Unofficial
-                    
-                    //var tmp_var = jQuery('<i/>').attr('id','test').css('display','none').append(param[3]).appendTo('body');
-                    //var tmp_size = tmp_var.width();
-                    //tmp_var.remove();
-                    var tmp_size = param[3].length*6;
-                    if (tmp_size > 200) {
-                        var st = '';
-                        if (tmp_size < 250)
-                            st = 'moveble250';
-                        else if (tmp_size < 300)
-                            st = 'moveble300';
-                        else if (tmp_size < 350)
-                            st = 'moveble350';
-                        else if (tmp_size < 400)
-                            st = 'moveble400';
-                        else if (tmp_size < 450)
-                            st = 'moveble450';
-                        else if (tmp_size < 500)
-                            st = 'moveble500';
-                        else if (tmp_size < 550)
-                            st = 'moveble550';
-                        else if (tmp_size > 550)
-                            st = 'moveble600';
-                        return '<td class="t_name"><div class="'+st+'" title="'+param[3]+'">'+param[3]+'</div></td>';
-                    } else
-                        return '<td class="t_name"><div title="'+param[3]+'">'+param[3]+'</div></td>';
+                    return '<td class="t_name"><div title="'+param[3]+'">'+param[3]+'</div></td>';
                     break;
                 case ('t_size'):
                     return '<td class="t_size" data-value="'+param[0]+'"><div title="'+bytesToSize(param[0])+'">'+bytesToSize(param[0])+'</div></td>';
@@ -489,6 +462,7 @@ var manager = function () {
         $('#'+id).unbind('dblclick').dblclick(function (){
             show_FileList($(this).attr('id'));
         });
+        calculate_moveble('t_name',200);
     }
     var updTorrent = function (id,param)
     {
@@ -708,28 +682,7 @@ var manager = function () {
             new_c++;
             var content = '<tr id="f_'+n+'" num="'+n+'" class="'+class_l+'">';
             content += '<td class="chk_box"><div><input type="checkbox"/></div></td>';
-            //tmp_var.html(f[0]);
-            //var tmp_size = tmp_var.width();
-            var tmp_size = f[0].length*6;
-            if (tmp_size > 270) {
-                if (tmp_size < 300)
-                    st = 'moveble300';
-                else if (tmp_size < 350)
-                    st = 'moveble350';
-                else if (tmp_size < 400)
-                    st = 'moveble400';
-                else if (tmp_size < 450)
-                    st = 'moveble450';
-                else if (tmp_size < 500)
-                    st = 'moveble500';
-                else if (tmp_size < 550)
-                    st = 'moveble550';
-                else if (tmp_size > 550)
-                    st = 'moveble600';
-                var sty = ' class="'+st+'"';
-            } else
-                var sty = "";
-            content += '<td class="fl_name"><div'+sty+' title="'+f[0]+'">'+f[0]+'</div></td>';
+            content += '<td class="fl_name"><div title="'+f[0]+'">'+f[0]+'</div></td>';
             var t = bytesToSize(f[1],'0');
             content += '<td class="fl_size" data-value="'+f[1]+'"><div title="'+t+'">'+t+'</div></td>';
             t = bytesToSize(f[2],'0');
@@ -834,6 +787,47 @@ var manager = function () {
                 t_obj.removeClass('hash_selected');
             }
         });
+        calculate_moveble('fl_name',270);
+    }
+    var calculate_moveble = function (section,size) {
+        if (size<=70) return;
+        var titles = $('td.'+section).find('div');
+        var titles_l = titles.length;
+        
+        for (var i = 0;i<titles_l;i++){
+            var str_w = titles.eq(i).text().length * 7;
+            if (str_w < size) continue;
+            str_w = Math.ceil(str_w/10);
+            if (str_w > 10) {
+                if (str_w < 100) {
+                    var t1 = Math.round(str_w/10);
+                    if (t1 > str_w/10)
+                        str_w = t1*10*10;
+                    else
+                        str_w = (t1*10 + 5)*10;
+                } else 
+                    str_w = str_w * 10;
+            } else 
+                str_w = str_w * 10;
+            var str_s = size;
+            var move_name = 'moveble'+'_'+str_s+'_'+str_w;
+            if ($('body').find('.'+move_name).length == 0) {
+                $('body').append('<style class="'+move_name+'">'
+                    +'@-webkit-keyframes a_'+move_name
+                    +'{'
+                    +'0%{margin-left:2px;padding-right:2px;}'
+                    +'50%{margin-left:-'+(str_w-str_s)+'px;padding-right:'+(str_w-str_s)+'px;}'
+                    +'90%{margin-left:6px;padding-right:6px;}'
+                    +'100%{margin-left:2px;padding-right:2px;}'
+                    +'}'
+                    +'td.'+section+' > div.'+move_name+':hover {'
+                    +'overflow: visible !important;'
+                    +'-webkit-animation:a_'+move_name+' 6s 1;'
+                    +'}'
+                    +'</style>');
+            }
+            titles.eq(i).attr('class',move_name);
+        }
     }
     var checkbox_click = function (obj)
     {
