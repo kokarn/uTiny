@@ -1,4 +1,5 @@
 #!/bin/sh
+find . -name ".DS_Store" -exec rm {} \;
 rm ./build.zip
 rm -r ./build
 mkdir ./build
