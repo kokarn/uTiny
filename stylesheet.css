@@ -38,6 +38,8 @@ div.main-menu a{
     height: 24px;
     width: 24px;
     display: block;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 div.main-menu div.btn_m-p a{
     height: 30px;
@@ -46,19 +48,19 @@ div.main-menu div.btn_m-p a{
     margin-top: -3px;
 }
 div.main-menu a.refresh{
-    background: url('/images/refresh.png') no-repeat center center;
+    background-image: url("/images/refresh.png");
 }
 div.main-menu a.donate{
-    background: url('/images/donate.png') no-repeat center center;
+    background-image: url("/images/donate.png");
 }
 div.main-menu a.wui{
-    background: url('/images/wui.png') no-repeat center center;
+    background-image: url("/images/wui.png");
 }
 div.main-menu a.play_all{
-    background: url('/images/play_all.png') no-repeat center center;
+    background-image: url("/images/play_all.png");
 }
 div.main-menu a.pause_all{
-    background: url('/images/pause_all.png') no-repeat center center;
+    background-image: url("/images/pause_all.png");
 }
 div.separate {
     height: 25px;

@@ -1231,7 +1231,11 @@ var manager = function () {
                     callback:function() {
                         if (sel_en[7] == 0 ) return;
                         
-                        apprise(lang_arr[73], {'verify':true,'textYes':lang_arr[110][0], 'textNo':lang_arr[110][1]}, function(r) {
+                        apprise(lang_arr[73], {
+                            'verify':true,
+                            'textYes':lang_arr[110][0], 
+                            'textNo':lang_arr[110][1]
+                        }, function(r) {
                             if(r) {
                                 if(typeof(r)!='string')
                                 {
@@ -1243,7 +1247,7 @@ var manager = function () {
                                 return;
                             }
                         });
-                        /*
+                    /*
                         if (!confirm(lang_arr[73])) return;
                         action(sel_tr_hash,'remove');
                         */
@@ -2152,83 +2156,80 @@ var rsz_table = function ()
 //<<<<<<<<<<<<
 
 //run script
-$(function() {
-    if (!chk()) {
-        window.location = "options.html";
-        return;
-    }
-    $('head').append('<style name="head_st">'+writeTableHead()+'</style>');
-    translate_page();
-    header = $("#tr_list_list thead").clone();
-    fixedHeader = $("#tr_list_fix").append(header);
-    fixedFlTab = $('#fl_list_fix');
-    rsz_table();
-    manager.run_graph();
-    manager.init_timer();
-    $('#label_select').selectBox();
-    $('#tree_select').selectBox();
-    $('#label_select').unbind().change(function(){
-        manager.selectLabel(this);
-    }).keyup(function(){
-        manager.selectLabel(this);
-    });
-    $('#tree_select').unbind().change(function(){
-        manager.selectTree(this);
-    }).keyup(function(){
-        manager.selectTree(this);
-    });
-    $('.tr-box').css({
-        'min-height':monitor_height-51,
-        'max-height':monitor_height-51
-    });
-    $(window).resize(function() {
-        $('.tr-box').css({
-            'min-height':$('html').height()-51,
-            'max-height':$('html').height()-51
+
+if (!chk()) {
+    window.location = "options.html";
+} else
+    $(function() {
+        $('head').append('<style name="head_st">'+writeTableHead()+'</style>');
+        translate_page();
+        header = $("#tr_list_list thead").clone();
+        fixedHeader = $("#tr_list_fix").append(header);
+        fixedFlTab = $('#fl_list_fix');
+        rsz_table();
+        manager.run_graph();
+        manager.init_timer();
+        $('#label_select').selectBox();
+        $('#tree_select').selectBox();
+        $('#label_select').unbind().change(function(){
+            manager.selectLabel(this);
+        }).keyup(function(){
+            manager.selectLabel(this);
         });
-    });
-    manager.writeList();
-    $('a.refresh').unbind().bind({
-        dblclick: function() {
-            var bg = chrome.extension.getBackgroundPage();
-            bg.engine.fullReloadList();
-        },
-        click: function() {
-            manager.refreshBt();
-            return false;
-        }
-    });
-    $('a.play_all').unbind().click(function(){
-        manager.actionUnpause_all();
-        return false;
-    });
-    $('a.pause_all').unbind().click(function(){
-        manager.actionPause_all();
-        return false;
-    });
-    $(window).unload(function () {
-        var bg = chrome.extension.getBackgroundPage();
-        bg.engine.dieDOM();
-    });
-    manager.createColumContextMenu();
-    $('div.tb_box').scroll(function() {
-        var offset = $(this).scrollTop();
-        if (offset >= 34 && $(fixedFlTab).is(":hidden")) {
-            $(fixedFlTab).css({
-                'display':'inline',
-                'position':'fixed'
+        $('#tree_select').unbind().change(function(){
+            manager.selectTree(this);
+        }).keyup(function(){
+            manager.selectTree(this);
+        });
+        $('.tr-box').css({
+            'min-height':monitor_height-51,
+            'max-height':monitor_height-51
+        });
+        $(window).resize(function() {
+            $('.tr-box').css({
+                'min-height':$('html').height()-51,
+                'max-height':$('html').height()-51
             });
-        } else if (offset < 34) {
-            $(fixedFlTab).css('display','none');
-        }
+        });
+        manager.writeList();
+        $('a.refresh').unbind().bind({
+            dblclick: function() {
+                var bg = chrome.extension.getBackgroundPage();
+                bg.engine.fullReloadList();
+            },
+            click: function() {
+                manager.refreshBt();
+                return false;
+            }
+        });
+        $('a.play_all').unbind().click(function(){
+            manager.actionUnpause_all();
+            return false;
+        });
+        $('a.pause_all').unbind().click(function(){
+            manager.actionPause_all();
+            return false;
+        });
+        $(window).unload(function () {
+            var bg = chrome.extension.getBackgroundPage();
+            bg.engine.dieDOM();
+        });
+        manager.createColumContextMenu();
+        $('div.tb_box').scroll(function() {
+            var offset = $(this).scrollTop();
+            if (offset >= 34 && $(fixedFlTab).is(":hidden")) {
+                $(fixedFlTab).css({
+                    'display':'inline',
+                    'position':'fixed'
+                });
+            } else if (offset < 34) {
+                $(fixedFlTab).css('display','none');
+            }
+        });
+        $(fixedFlTab).css('width',$('#fl_list_list').css('width')+'px');
+        $('body').height($('html').height());
+        var t = getRandomArbitary(0,10000);
+        if (t<6200 && t>5200)
+            $('a.donate').css("background","url('images/pig.png') no-repeat center center");
     });
-    $(fixedFlTab).css('width',$('#fl_list_list').css('width')+'px');
-    $('body').height($('html').height());
-    var t = getRandomArbitary(0,10000);
-    if (t<6200 && t>5200)
-        //{
-        $('a.donate').css("background","url('images/pig.png') no-repeat center center");
-//window.setTimeout(function(){rotateYDIV();}, 2000);
-//}
-});
 //<<<<<<<<<<<<<<<<<<<
