@@ -10,28 +10,6 @@ cp *.html ./build/.
 cp *.json ./build/.
 cp *.css ./build/.
 
-rm ./build/js/vp/video-js.css
-rm ./build/js/vp/vim.css
-rm ./build/js/ap/blue.monday/jplayer.blue.monday.css
-rm ./build/js/background.js
-rm ./build/js/manager.js
-rm ./build/js/media.js
-rm ./build/js/options.js
-rm ./build/js/donate.js
-rm ./build/js/notifi.js
-rm ./build/js/jquery.contextmenu.css
-rm ./build/js/jquery.contextmenu.js
-rm ./build/js/jquery.timers-1.2.js
-rm ./build/js/jquery.ui.position.js
-rm ./build/js/jquery.tablesorter.js
-rm ./build/js/jquery.selectbox.js
-rm ./build/js/jquery.selectbox.css
-rm ./build/options.css
-rm ./build/donate.css
-rm ./build/notifi.css
-rm ./build/stylesheet.css
-rm ./build/media.css
-
 java -jar compiler.jar --js ./js/options.js --js_output_file ./build/js/options.js
 java -jar compiler.jar --js ./js/donate.js --js_output_file ./build/js/donate.js
 java -jar compiler.jar --js ./js/notifi.js --js_output_file ./build/js/notifi.js
@@ -44,6 +22,7 @@ java -jar compiler.jar --js ./js/jquery.ui.position.js --js_output_file ./build/
 java -jar compiler.jar --js ./js/jquery.contextmenu.js --js_output_file ./build/js/jquery.contextmenu.js
 java -jar compiler.jar --js ./js/jquery.tablesorter.js --js_output_file ./build/js/jquery.tablesorter.js
 java -jar compiler.jar --js ./js/jquery.selectbox.js --js_output_file ./build/js/jquery.selectbox.js
+java -jar compiler.jar --js ./js/apprise-1.5.min.js --js_output_file ./build/js/apprise-1.5.min.js
 
 java -jar yuicompressor-2.4.7.jar ./js/ap/blue.monday/jplayer.blue.monday.css -o ./build/js/ap/blue.monday/jplayer.blue.monday.css
 java -jar yuicompressor-2.4.7.jar ./js/vp/video-js.css -o ./build/js/vp/video-js.css
@@ -55,6 +34,7 @@ java -jar yuicompressor-2.4.7.jar ./media.css -o ./build/media.css
 java -jar yuicompressor-2.4.7.jar ./options.css -o ./build/options.css
 java -jar yuicompressor-2.4.7.jar ./notifi.css -o ./build/notifi.css
 java -jar yuicompressor-2.4.7.jar ./donate.css -o ./build/donate.css
+java -jar yuicompressor-2.4.7.jar ./apprise.min.css -o ./build/apprise.min.css
 
 cd ./build/
 zip -r ../build.zip ./

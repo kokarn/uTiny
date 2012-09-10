@@ -1230,8 +1230,23 @@ var manager = function () {
                     className: 'ctx_remove',	
                     callback:function() {
                         if (sel_en[7] == 0 ) return;
+                        
+                        apprise(lang_arr[73], {'verify':true,'textYes':lang_arr[110][0], 'textNo':lang_arr[110][1]}, function(r) {
+                            if(r) {
+                                if(typeof(r)!='string')
+                                {
+                                    action(sel_tr_hash,'remove');
+                                }
+                            }
+                            else 
+                            {
+                                return;
+                            }
+                        });
+                        /*
                         if (!confirm(lang_arr[73])) return;
                         action(sel_tr_hash,'remove');
+                        */
                     }, 
                     item:'7'
                 },

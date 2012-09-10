@@ -108,7 +108,8 @@ var lang_arr_en = {
     106:['Your support helps us to develop this extension!','Now you can support us with PayPal!','Other payment methods:','Yandex.Money','I deeply appreciate your support, Thank you!','Back','WebMoney'],
     107:['Save your settings first!','free','Add','Remove selected','Sub-path','Path','Folders in context menu','Sub-path must exist!'],
     108:['Rollback error!','Restore error!','Rollback','Restore','Update','Restore','Backup','Export settings'],
-    109:'Show number of active downloads on the icon'
+    109:'Show number of active downloads on the icon',
+    110:['Yes','No']
 }
 var lang_arr_ru = {
     0:'Запустить',
@@ -220,7 +221,8 @@ var lang_arr_ru = {
     106:['Ваша поддержка помогает нам в развитии проекта!','Теперь вы можете помочь нам через PayPal!','Другие варианты помочь нам:','Яндекс.Деньги','Я очень сильно ценю вашу поддержку, Спасибо вам!','Вернуться','WebMoney'],
     107:['Сначала сохраните текущие настройки!','свободно','Добавить','Удалить выбранное','Подкаталог','Каталог','Каталоги','Подкаталог должен существовать!'],
     108:['Ошибка отката настроек!','Ошибка восстановления настроек!','Откатить','Восстановить','Обновить код','Восстановление','Бэкап','Экспорт настроек'],
-    109:'Отображать кол-во активных загрузок на иконке'
+    109:'Отображать кол-во активных загрузок на иконке',
+    110:['Да','Нет']
 }
 var lang = (localStorage.lang !== undefined) ? localStorage["lang"] : 'en';
 if (lang == 'ru') { 
