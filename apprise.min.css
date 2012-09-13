@@ -17,6 +17,7 @@
     max-width:75%;
     position:fixed;
     display:none;
+    border-top: 0;
 }
 .appriseInner{
     color:#333;
@@ -25,8 +26,7 @@
 }
 .appriseInner button{
     border:1px solid #bbb;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-radius: 3px;
     background:0;
     color:#232d3d;
     font-size:12px;
