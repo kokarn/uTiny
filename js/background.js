@@ -848,14 +848,13 @@ var engine = function () {
 
             xhr.open("GET", url, true);
             xhr.overrideMimeType("text/plain; charset=x-user-defined");
-            xhr.responseType = "arraybuffer";
+            xhr.responseType = "blob";
 
             xhr.onload = function() {
-                var blob = new WebKitBlobBuilder();
-                blob.append(xhr.response);
+                var blob = xhr.response;
 
                 //link_note(filename,lang_arr[100],null);
-                callback(blob.getBlob(),param);
+                callback(blob,param);
             };
             xhr.send(null);
         };

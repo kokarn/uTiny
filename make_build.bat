@@ -65,4 +65,4 @@ java -jar yuicompressor-2.4.7.jar .\media.css -o .\build\media.css
 java -jar yuicompressor-2.4.7.jar .\options.css -o .\build\options.css
 java -jar yuicompressor-2.4.7.jar .\notifi.css -o .\build\notifi.css
 java -jar yuicompressor-2.4.7.jar .\donate.css -o .\build\donate.css
-start "7zip" "C:\Program Files\7-Zip\7z.exe" a D:\System\uTtiny\build.zip D:\System\uTtiny\build\*
+start "7zip" "C:\Program Files\7-Zip\7zG.exe" a D:\System\uTiny\build.zip D:\System\uTiny\build\*
